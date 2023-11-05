@@ -1,67 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <title>Product List Page</title>
-    <link rel="stylesheet" href="Products.css">
   <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>ShoeStack</title>
+  <link rel="stylesheet" href="style.css">
+    <nav class="logo">
+    
+  </nav>
 </head>
 <body>
-  <div >
-    <h2 class="logo">HYPE SNKRS</h2>
-  </div>
-  <div class="product-list">
-    <div class="product-item">
+ <div class="item-list">
+   <div class="item">
+     <div class="imgs"><img class="i-img" src="19896643_44800923_600.jpg">
+</div>
+         <h3 class="item-name">AIR-JORDAN</h3>
+      <p class="size">40,41,42,43</p>
+  <p class="price">3000ETB</p>
 
-    <span id="count-badge" class="count-badge-hidden"></span>
-      
-      <div class="product-info">
-        <img src="img.jpg" alt="Air Sneakers">
-        <h3>Air Sneakers</h3>
+   </div>
+    
+    
+   <div class="item">
+     <div class="imgs"><img class="i-img" src="19896643_44800923_600.jpg">
+</div>
+         <h3 class="item-name">AIR-JORDAN</h3>
+      <p class="size">40,41,42,43</p>
+  <p class="price">3000ETB</p>
 
+   </div>
+    
+ <div class="item">
+     <div class="imgs"><img class="i-img" src="19896643_44800923_600.jpg">
+</div>
+         <h3 class="item-name">AIR-JORDAN</h3>
+      <p class="size">40,41,42,43</p>
+  <p class="price">3000ETB</p>
 
-        <p class="price">2800ETB</p>
-                <p class="size">SIZE:40,41,2,43,45</p>
-        <p class="size">COLORS: BLACK,WHITE</p>
-       </div>
-      </div>
-  </div>
+   </div>
+   
+ <div class="item">
+     <div class="imgs"><img class="i-img" src="19896643_44800923_600.jpg">
+</div>
+         <h3 class="item-name">AIR-JORDAN</h3>
+      <p class="size">40,41,42,43</p>
+  <p class="price">3000ETB</p>
 
-    <div class="product-item">
+   </div>
+   
+    <div class="item">
+     <div class="imgs"><img class="i-img" src="19896643_44800923_600.jpg">
+</div>
+         <h3 class="item-name">AIR-JORDAN</h3>
+      <p class="size">40,41,42,43</p>
+  <p class="price">3000ETB</p>
 
-    <span id="count-badge" class="count-badge-hidden"></span>
-      
-      <div class="product-info">
-        <img src="img2.jpg" alt="Air Sneakers">
-        <h3>Air Sneakers</h3>
+   </div>
+   
+    <div class="item">
+     <div class="imgs"><img class="i-img" src="19896643_44800923_600.jpg">
+</div>
+         <h3 class="item-name">AIR-JORDAN</h3>
+      <p class="size">40,41,42,43</p>
+  <p class="price">3000ETB</p>
 
-
-        <p class="price">2800ETB</p>
-                <p class="size">SIZE:40,41,2,43,45</p>
-        <p class="size">COLORS: BLACK,WHITE</p>
-       
-      </div>
-    </div>
-    </div>
-  <script>
-    // Add a click event listener to the product item.
-// Add a click event listener to the product item.// Add a click event listener to each product item.
-document.querySelectorAll(".product-item").forEach(function(productItem) {
-  productItem.addEventListener("click", function() {
-    // Remove the .count-badge-hidden class from the count badge element.
-    var countBadge = productItem.querySelector("#count-badge");
-    countBadge.classList.remove("count-badge-hidden");
-
-    // Add a click event listener to the body element to hide the count badge when the user clicks anywhere else on the page.
-    document.querySelector("body").addEventListener("click", function() {
-      countBadge.classList.add("count-badge-hidden");
-    });
-  });
-});
-
-
-  </script>
+   </div>
+ </div>
+  
 </body>
+
 </html>
