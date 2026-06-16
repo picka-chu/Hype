@@ -18,8 +18,42 @@ Many businesses receive successful transfer SMS messages on the owner account, w
 1. Business owners create an account and add verified bank accounts, account holder names, branches, and staff credentials.
 2. Staff log in to a mobile-first dashboard and tap **Verify payment**.
 3. The scanner reads the QR code from the customer's bank success screen.
-4. The backend downloads the official receipt PDF, Gemini extracts receipt details, and Surepay compares sender name, receiver name, amount, account number, and FT/reference number.
-5. Staff see a clear verified, fake, or false-amount result and confirmed transfers are stored for owner reporting.
+4. The backend downloads the official receipt PDF/page, Gemini extracts receipt details, and Surepay compares sender name, receiver name, amount, account number, and FT/reference number.
+5. If QR scanning fails, staff capture the customer success dialog image; Gemini extracts visible text and Surepay identifies the bank, transaction reference, receipt URL, and retrieval method.
+6. Staff see a clear verified, fake, or false-amount result and confirmed transfers are stored for owner reporting.
+
+## Receipt retrieval strategy
+
+Surepay supports two receipt discovery paths:
+
+1. **QR-first verification** — scan the QR/link from the customer's phone and identify the bank from the URL or transaction reference.
+2. **Image fallback verification** — when QR scanning fails, capture the transfer success dialog, send the image to Gemini, extract visible text, then identify the bank and receipt source from the extracted URL, FT number, transaction ID, account text, or bank name.
+
+The Node.js receipt module currently recognizes these receipt patterns:
+
+- CBE: `https://apps.cbe.com.et:100/?id=FT...`
+- Dashen: `https://receipt.dashensuperapp.com/receipt/...`
+- Awash: `https://awashpay.awashbank.com:8225/-...`
+- Bank of Abyssinia: `https://cs.bankofabyssinia.com/slip/?trx=...`
+- Zemen: `https://share.zemenbank.com/rt/.../pdf`
+- telebirr-style references such as `CHQ0FJ403O`
+
+The backend endpoint is `POST /api/verification/receipt`. Send either:
+
+```json
+{ "qrValue": "https://apps.cbe.com.et:100/?id=FT*************" }
+```
+
+or, when QR scanning fails:
+
+```json
+{
+  "dialogImageBase64": "data:image/jpeg;base64,...",
+  "dialogImageMimeType": "image/jpeg"
+}
+```
+
+The endpoint identifies the bank, chooses the retrieval method, fetches the official receipt PDF/page, and returns receipt metadata for the next matching step.
 
 ## App routes to check locally
 
@@ -96,7 +130,6 @@ If the build succeeds, you can run the production server with:
 npm run start
 ```
 
-
 ## Vercel deployment
 
 This project targets Node.js 24 on Vercel. If Vercel reports an invalid or discontinued Node.js version such as `18.x`, update the project runtime before redeploying:
@@ -110,5 +143,6 @@ The repository also declares the Node.js runtime in `package.json` so Vercel can
 
 ## Notes
 
-- The current app is a frontend prototype. Supabase, QR scanning, PDF download, and Gemini extraction are represented by data structures and placeholders.
-- No API keys are required to preview the current UI locally.
+- The UI can be previewed without API keys.
+- `GEMINI_API_KEY` is required only when testing image fallback extraction through `POST /api/verification/receipt`.
+- Receipt retrieval depends on each bank receipt URL remaining publicly reachable from the server runtime.
