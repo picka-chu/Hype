@@ -117,7 +117,7 @@ function HeroPhone() {
       </div>
       <div className="mt-4 grid gap-4 sm:grid-cols-2"><Status title="Payment verified" tone="green" /><Status title="Needs review" tone="amber" /></div>
     </div>
-  </div>;
+    );
 }
 
 function Action({ icon, label, active }: { icon: string; label: string; active?: boolean }) {
