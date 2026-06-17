@@ -9,8 +9,8 @@ const proofCards = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#deddd8] px-3 py-4 text-[#0b0c0b] sm:px-5 sm:py-8">
-      <section className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-white/70 bg-[radial-gradient(circle_at_7%_8%,#eef8d7_0,#eef8d7_18%,transparent_38%),radial-gradient(circle_at_92%_18%,#dff5fb_0,#dff5fb_22%,transparent_44%),linear-gradient(180deg,#fbfbf6_0%,#f8f8f1_70%,#ffffff_100%)] px-4 py-5 sm:rounded-[2.75rem] sm:px-8 lg:px-12">
+    <main className="min-h-screen bg-[#fbfbf6] text-[#0b0c0b]">
+      <section className="w-full overflow-hidden bg-[radial-gradient(circle_at_7%_8%,#eef8d7_0,#eef8d7_18%,transparent_38%),radial-gradient(circle_at_92%_18%,#dff5fb_0,#dff5fb_22%,transparent_44%),linear-gradient(180deg,#fbfbf6_0%,#f8f8f1_70%,#ffffff_100%)] px-4 py-5 sm:px-8 lg:px-12">
         <HeroNav />
         <section className="mx-auto max-w-3xl pt-12 text-center sm:pt-16">
           <a href="#verification" className="inline-flex items-center gap-2 rounded-full bg-white/75 px-3 py-1.5 text-xs font-bold text-[#565b55] ring-1 ring-black/10">
@@ -26,12 +26,12 @@ export default function Home() {
             sender details, receiver accounts, amounts, and FT numbers in one staff-friendly PWA.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a href="/onboarding" className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-black px-6 py-3.5 text-sm font-black text-white sm:w-auto">
-              Get Surepay App
+            <a href="/login" className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-black px-6 py-3.5 text-sm font-black text-white sm:w-auto">
+              Sign in
               <span className="grid size-6 place-items-center rounded-full bg-white text-black">↗</span>
             </a>
-            <a href="#verification" className="inline-flex w-full items-center justify-center rounded-full border border-black/20 bg-white/70 px-6 py-3.5 text-sm font-black sm:w-auto">
-              Explore verification
+            <a href="/create-account" className="inline-flex w-full items-center justify-center rounded-full border border-black/20 bg-white/70 px-6 py-3.5 text-sm font-black sm:w-auto">
+              Create account
             </a>
           </div>
         </section>
@@ -92,8 +92,8 @@ function HeroNav() {
         <a href="#plan">Roadmap</a>
         <a href="/login">Staff Login</a>
       </div>
-      <a href="/create-account" className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-2.5 text-xs font-black text-white sm:px-5">
-        Get App
+      <a href="/login" className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-2.5 text-xs font-black text-white sm:px-5">
+        Sign in
         <span className="grid size-5 place-items-center rounded-full bg-white text-black">↗</span>
       </a>
     </nav>
