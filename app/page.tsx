@@ -96,9 +96,9 @@ function HeroPhone() {
                 </div>
               </div>
               <div className="quick-actions">
-                <Action icon="↙" label="SEND" active />
-                <Action icon="◈" label="PAYMENTS" />
-                <Action icon="▯" label="AIRTIME" />
+                <PhoneAction icon="↙" label="SEND" active />
+                <PhoneAction icon="◈" label="PAYMENTS" />
+                <PhoneAction icon="▯" label="AIRTIME" />
               </div>
               <div className="wallet-list">
                 {walletItems.map(([title, date, amount]) => (
@@ -158,6 +158,15 @@ function HandShape() {
 }
 
 function Action({ icon, label, active }: { icon: string; label: string; active?: boolean }) {
+  return (
+    <div className={active ? 'action active' : 'action'}>
+      <span>{icon}</span>
+      <p>{label}</p>
+    </div>
+  );
+}
+
+function PhoneAction({ icon, label, active }: { icon: string; label: string; active?: boolean }) {
   return (
     <div className={active ? 'action active' : 'action'}>
       <span>{icon}</span>
