@@ -4,6 +4,7 @@ const walletItems = [
   ['Sent to Meron Daba', 'July 18, 2026 at 4:11 AM', '-5,000F'],
   ['Deposit', 'July 18, 2026 at 7:14 AM', '15,000F'],
 ];
+const values = ['Trust', 'Speed', 'Security', 'Simplicity'];
 
 export default function Home() {
   return (
@@ -114,6 +115,53 @@ function HeroPhone() {
           </div>
         </div>
       </div>
+      <div className="mt-4 grid gap-4 sm:grid-cols-2"><Status title="Payment verified" tone="green" /><Status title="Needs review" tone="amber" /></div>
+    </div>
+    );
+}
+
+function Action({ icon, label, active }: { icon: string; label: string; active?: boolean }) {
+  return (
+    <div className={active ? 'action active' : 'action'}>
+      <span>{icon}</span>
+      <p>{label}</p>
+    </div>
+  );
+}
+
+function HandShape() {
+  return (
+    <svg className="hand-svg" viewBox="0 0 520 760" aria-hidden="true">
+      <defs>
+        <linearGradient id="skin" x1="0" x2="1" y1="0" y2="1">
+          <stop stopColor="#7d402d" />
+          <stop offset="0.35" stopColor="#c28767" />
+          <stop offset="0.72" stopColor="#efd1bd" />
+          <stop offset="1" stopColor="#7a3828" />
+        </linearGradient>
+        <linearGradient id="skinShadow" x1="0" x2="1" y1="0" y2="1">
+          <stop stopColor="#6b2e25" />
+          <stop offset="1" stopColor="#e0ad8d" />
+        </linearGradient>
+        <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="30" stdDeviation="34" floodColor="#000" floodOpacity="0.16" />
+        </filter>
+      </defs>
+      <path filter="url(#softShadow)" d="M176 318c-46 40-60 96-50 162l16 112c10 70 49 128 111 158 58 28 123 2 129-62l22-239c4-46-1-91-24-118-35-42-139-70-204-13Z" fill="url(#skin)" />
+      <path d="M386 267c34-1 58 21 61 55l12 133c3 31-16 54-45 56l-18 1-4-241-6-4Z" fill="url(#skinShadow)" />
+      <path d="M129 318c-29-15-54-3-62 28-19 74 1 225 58 335 30 58 72 86 115 70-70-40-102-100-113-176L104 417c-6-44 2-77 25-99Z" fill="url(#skinShadow)" />
+      <path d="M421 319c37 4 54 27 53 68l-3 69c-1 29-20 50-48 51l-20 1 4-179 14-10Z" fill="#8d4634" opacity="0.78" />
+      <path d="M392 264c-5 52-4 211 3 247" stroke="#5f2b25" strokeWidth="6" strokeLinecap="round" opacity="0.42" />
+      <path d="M102 371c30 18 45 44 48 82" stroke="#5f2b25" strokeWidth="8" strokeLinecap="round" opacity="0.28" />
+    </svg>
+  );
+}
+
+function Action({ icon, label, active }: { icon: string; label: string; active?: boolean }) {
+  return (
+    <div className={active ? 'action active' : 'action'}>
+      <span>{icon}</span>
+      <p>{label}</p>
     </div>
   );
 }
