@@ -4,6 +4,7 @@ const walletItems = [
   ['Sent to Meron Daba', 'July 18, 2026 at 4:11 AM', '-5,000F'],
   ['Deposit', 'July 18, 2026 at 7:14 AM', '15,000F'],
 ];
+const values = ['Trust', 'Speed', 'Security', 'Simplicity'];
 
 export default function Home() {
   return (
@@ -114,8 +115,9 @@ function HeroPhone() {
           </div>
         </div>
       </div>
+      <div className="mt-4 grid gap-4 sm:grid-cols-2"><Status title="Payment verified" tone="green" /><Status title="Needs review" tone="amber" /></div>
     </div>
-  );
+  </div>;
 }
 
 function Action({ icon, label, active }: { icon: string; label: string; active?: boolean }) {
