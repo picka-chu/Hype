@@ -2,14 +2,13 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Surepay — Payment verification for Ethiopian businesses',
-  description:
-    'A PWA SaaS concept that helps Ethiopian businesses verify bank transfer receipts before handing over goods or services.',
+  title: 'SurePay — Trusted payment verification',
+  description: 'A modern verification workspace for teams that accept bank transfers before delivery.',
   manifest: '/manifest.webmanifest',
 };
 
 export const viewport: Viewport = {
-  themeColor: '#0f3d35',
+  themeColor: '#2563FF',
   width: 'device-width',
   initialScale: 1,
 };

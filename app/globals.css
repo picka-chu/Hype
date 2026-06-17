@@ -1,42 +1,46 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f5f3ed;
-  --foreground: #12201c;
-  --muted: #66736f;
-  --primary: #0f3d35;
-  --primary-foreground: #f9f5ea;
-  --card: #fffcf5;
-  --line: #ded8ca;
-  --accent: #d8b15f;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --muted: #64748b;
+  --primary: #2563ff;
+  --primary-2: #0a1fff;
+  --sky: #2da8ff;
+  --navy: #0f172a;
+  --success: #22c55e;
+  --warning: #ef4444;
+  --card: #ffffff;
+  --line: #e2e8f0;
+  --soft-blue: #eff6ff;
+  --shadow: 0 24px 80px rgba(15, 23, 42, 0.12);
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   min-height: 100vh;
   margin: 0;
-  background: var(--background);
+  background:
+    radial-gradient(circle at 8% -10%, rgba(45, 168, 255, 0.18), transparent 28rem),
+    radial-gradient(circle at 95% 8%, rgba(37, 99, 255, 0.16), transparent 26rem),
+    var(--background);
   color: var(--foreground);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
+button, a { -webkit-tap-highlight-color: transparent; }
+a { text-decoration: none; color: inherit; }
+::selection { background: rgba(37, 99, 255, 0.18); }
 
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
-}
-
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
+.brand-word { font-family: Poppins, Inter, ui-sans-serif, system-ui, sans-serif; letter-spacing: -0.04em; }
+.glass-card { border: 1px solid rgba(226, 232, 240, 0.88); background: rgba(255, 255, 255, 0.78); box-shadow: var(--shadow); backdrop-filter: blur(22px); }
+.blue-gradient { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 48%, var(--sky) 100%); }
+.text-gradient { background: linear-gradient(135deg, var(--primary), var(--primary-2) 48%, var(--sky)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.brand-mark { position: relative; display: inline-grid; place-items: center; isolation: isolate; }
+.brand-mark::before, .brand-mark::after { content: ""; position: absolute; width: 68%; height: 32%; border-radius: 999px; transform: rotate(28deg); box-shadow: inset 0 -10px 18px rgba(255,255,255,.12); }
+.brand-mark::before { top: 25%; background: linear-gradient(135deg, #2563ff, #2da8ff); }
+.brand-mark::after { bottom: 25%; background: linear-gradient(135deg, #2da8ff, #0a1fff); }
+.input-shell { border: 1px solid var(--line); background: rgba(255,255,255,.9); border-radius: 1.25rem; padding: .9rem 1rem; outline: none; transition: border-color .2s, box-shadow .2s; }
+.input-shell:focus { border-color: rgba(37,99,255,.7); box-shadow: 0 0 0 4px rgba(37,99,255,.1); }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

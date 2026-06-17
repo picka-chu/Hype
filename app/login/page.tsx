@@ -2,34 +2,8 @@ import Link from 'next/link';
 import { authFlow } from '@/lib/firebase';
 
 export default function LoginPage() {
-  return (
-    <main className="min-h-screen bg-[var(--background)] px-5 py-8">
-      <section className="mx-auto grid max-w-5xl gap-6 md:grid-cols-[0.9fr_1.1fr]">
-        <div className="rounded-[2rem] border border-[var(--line)] bg-[var(--primary)] p-7 text-[var(--primary-foreground)]">
-          <p className="text-sm font-black uppercase tracking-[0.25em] text-[#d8b15f]">Firebase login</p>
-          <h1 className="mt-5 text-4xl font-black tracking-[-0.05em]">Password first, then phone OTP.</h1>
-          <p className="mt-5 leading-7 text-[#dce8e3]">Surepay checks the account password first. If it is correct, Firebase Auth sends an OTP to the phone number before opening the business dashboard.</p>
-          <div className="mt-7 space-y-3">
-            {authFlow.login.map((step, index) => (
-              <p key={step} className="rounded-2xl border border-white/15 p-4 text-sm text-[#dce8e3]"><b className="text-[#d8b15f]">0{index + 1}</b> {step}</p>
-            ))}
-          </div>
-        </div>
-
-        <form className="rounded-[2rem] border border-[var(--line)] bg-[var(--card)] p-7">
-          <p className="text-sm font-black uppercase tracking-[0.25em] text-[var(--primary)]">Sign in</p>
-          <h2 className="mt-4 text-3xl font-black tracking-tight">Access your business dashboard.</h2>
-          <label className="mt-7 block text-sm font-black">Phone number<input className="mt-2 w-full rounded-2xl border border-[var(--line)] bg-white px-4 py-3" inputMode="tel" placeholder="+251 9•• ••• •••" /></label>
-          <label className="mt-4 block text-sm font-black">Password<input className="mt-2 w-full rounded-2xl border border-[var(--line)] bg-white px-4 py-3" type="password" placeholder="••••••••" /></label>
-          <div className="mt-5 rounded-2xl border border-[var(--line)] bg-white p-4">
-            <p className="text-sm font-black">OTP verification</p>
-            <p className="mt-1 text-sm leading-6 text-[var(--muted)]">After password validation, Firebase sends the OTP to this phone number.</p>
-            <input className="mt-3 w-full rounded-2xl border border-[var(--line)] bg-[#f5f3ed] px-4 py-3" inputMode="numeric" placeholder="Enter OTP code" />
-          </div>
-          <Link href="/dashboard" className="mt-6 flex justify-center rounded-full bg-[var(--primary)] px-6 py-4 font-black text-[var(--primary-foreground)]">Verify OTP & continue</Link>
-          <Link href="/create-account" className="mt-4 flex justify-center rounded-full border border-[var(--line)] px-6 py-4 font-black">Create business account</Link>
-        </form>
-      </section>
-    </main>
-  );
+  return <main className="min-h-screen px-5 py-8"><section className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[.9fr_1.1fr]">
+    <aside className="rounded-[2.5rem] bg-[var(--navy)] p-8 text-white shadow-2xl shadow-slate-900/20"><Link href="/" className="flex items-center gap-3"><span className="brand-mark size-11 rounded-2xl bg-white/10" /><span className="brand-word text-2xl font-black">SurePay</span></Link><p className="mt-14 text-sm font-black uppercase tracking-[.28em] text-blue-200">Secure access</p><h1 className="brand-word mt-5 text-5xl font-black tracking-[-.06em]">Welcome back to your verification workspace.</h1><div className="mt-8 space-y-3">{authFlow.login.map((step, i) => <p key={step} className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-blue-50"><b className="text-sky-300">0{i+1}</b> {step}</p>)}</div></aside>
+    <form className="rounded-[2.5rem] border border-slate-200 bg-white p-8 shadow-sm"><p className="text-sm font-black uppercase tracking-[.28em] text-[var(--primary)]">Sign in</p><h2 className="brand-word mt-4 text-4xl font-black tracking-[-.05em]">Access your dashboard.</h2><label className="mt-8 block text-sm font-black">Phone number<input className="input-shell mt-2 w-full" inputMode="tel" placeholder="+251 9•• ••• •••" /></label><label className="mt-4 block text-sm font-black">Password<input className="input-shell mt-2 w-full" type="password" placeholder="••••••••" /></label><div className="mt-5 rounded-3xl bg-slate-50 p-5"><p className="font-black">One-time code</p><p className="mt-1 text-sm leading-6 text-[var(--muted)]">Enter the code sent to the phone number on your account.</p><input className="input-shell mt-3 w-full" inputMode="numeric" placeholder="6-digit code" /></div><Link href="/dashboard" className="mt-6 flex justify-center rounded-full blue-gradient px-6 py-4 font-black text-white">Continue</Link><Link href="/create-account" className="mt-4 flex justify-center rounded-full border border-slate-200 px-6 py-4 font-black">Create business account</Link></form>
+  </section></main>;
 }

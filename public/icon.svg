@@ -1,4 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Surepay icon">
-  <rect width="128" height="128" rx="30" fill="#0f3d35"/>
-  <path d="M36 66.5 55.5 86 94 43" fill="none" stroke="#f5d488" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="SurePay icon">
+  <rect width="128" height="128" rx="30" fill="#F8FAFC"/>
+  <g transform="translate(16 18) rotate(28 48 46)">
+    <rect x="18" y="5" width="70" height="34" rx="17" fill="url(#a)"/>
+    <rect x="8" y="52" width="82" height="34" rx="17" fill="url(#b)"/>
+    <rect x="26" y="35" width="76" height="30" rx="15" fill="#0A1FFF" opacity=".96"/>
+  </g>
+  <defs>
+    <linearGradient id="a" x1="18" x2="88" y1="5" y2="39"><stop stop-color="#2563FF"/><stop offset="1" stop-color="#2DA8FF"/></linearGradient>
+    <linearGradient id="b" x1="8" x2="90" y1="52" y2="86"><stop stop-color="#2DA8FF"/><stop offset="1" stop-color="#2563FF"/></linearGradient>
+  </defs>
 </svg>
