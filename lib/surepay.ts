@@ -30,8 +30,8 @@ export const activity = [
 ];
 
 export const productPlan = [
-  'Phase 1: Build onboarding, tenant signup, staff login, dashboard shell, and mobile verification UI.',
-  'Phase 2: Add Supabase tenants, staff roles, business bank accounts, verification history, and branch reporting.',
+  'Phase 1: Build tenant signup, Firebase phone OTP login, dashboard shell, and mobile verification UI.',
+  'Phase 2: Add Firebase tenants, staff roles, business bank accounts, verification history, and branch reporting.',
   'Phase 3: Implement QR scanning, receipt PDF download, Gemini extraction, and deterministic matching rules.',
   'Phase 4: Add audit trails, false-amount recovery flow, exports, alerts, and production monitoring.',
 ];

@@ -10,17 +10,25 @@ Many businesses receive successful transfer SMS messages on the owner account, w
 
 - Next.js App Router for the web app and PWA shell.
 - Tailwind CSS for a minimal premium interface with rounded cards and buttons.
-- Supabase for tenants, staff users, bank accounts, verification history, and audit logs.
+- Firebase for Auth phone OTP, tenant data, staff users, bank accounts, verification history, and audit logs.
 - Gemini API for extracting structured facts from bank receipt PDFs.
 
 ## Core workflow
 
 1. Business owners create an account and add verified bank accounts, account holder names, branches, and staff credentials.
-2. Staff log in to a mobile-first dashboard and tap **Verify payment**.
+2. Owners and staff sign in with phone number and password; Surepay validates the password first, sends a Firebase phone OTP, then opens the mobile-first dashboard.
 3. The scanner reads the QR code from the customer's bank success screen.
 4. The backend downloads the official receipt PDF/page, Gemini extracts receipt details, and Surepay compares sender name, receiver name, amount, account number, and FT/reference number.
 5. If QR scanning fails, staff capture the customer success dialog image; Gemini extracts visible text and Surepay identifies the bank, transaction reference, receipt URL, and retrieval method.
 6. Staff see a clear verified, fake, or false-amount result and confirmed transfers are stored for owner reporting.
+
+
+## Firebase authentication flow
+
+Surepay uses Firebase as the app database and authentication foundation:
+
+- **Login:** the user enters phone number and password, Surepay checks that the password is correct, Firebase sends a phone OTP, then the user verifies the OTP and lands on the business dashboard.
+- **Create account:** the owner enters full name, business name, business address, phone number, password, and confirm password, then continues to phone OTP verification. After OTP verification, Surepay creates the tenant, owner profile, and business dashboard access in Firebase.
 
 ## Receipt retrieval strategy
 
@@ -58,7 +66,6 @@ The endpoint identifies the bank, chooses the retrieval method, fetches the offi
 ## App routes to check locally
 
 - `/` — marketing landing page with product plan and mobile staff preview.
-- `/onboarding` — tenant setup walkthrough.
 - `/create-account` — owner signup concept.
 - `/login` — staff credential login concept.
 - `/dashboard` — owner/staff verification history and bank-account overview.
@@ -103,7 +110,6 @@ Visit these pages manually:
 
 ```text
 http://localhost:3000/
-http://localhost:3000/onboarding
 http://localhost:3000/create-account
 http://localhost:3000/login
 http://localhost:3000/dashboard

@@ -87,7 +87,7 @@ function HeroNav() {
         Surepay
       </a>
       <div className="hidden items-center gap-8 text-xs font-bold text-[#565b55] md:flex">
-        <a href="/onboarding">Onboarding</a>
+        <a href="/create-account">Create account</a>
         <a href="#verification">Features</a>
         <a href="#plan">Roadmap</a>
         <a href="/login">Staff Login</a>
