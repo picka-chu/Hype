@@ -1,165 +1,156 @@
-import { productPlan, verificationSteps } from '@/lib/surepay';
-
-const trustLogos = ['EthioPay', 'Kacha', 'Santim', 'ArifPay', 'Shega'];
-const proofCards = [
-  { label: 'Today protected', value: 'ETB 128K', detail: '42 verified bank transfers' },
-  { label: 'Auto-match rate', value: '97.8%', detail: 'Receipt, account, amount, and FT matched' },
-  { label: 'Median decision', value: '12 sec', detail: 'QR-first with image fallback' },
+const walletItems = [
+  ['Withdraw', 'July 18, 2026 at 4:04 AM', '10,000F'],
+  ['Deposit', 'July 18, 2026 at 4:06 AM', '10,000F'],
+  ['Sent to Meron Daba', 'July 18, 2026 at 4:11 AM', '-5,000F'],
+  ['Deposit', 'July 18, 2026 at 7:14 AM', '15,000F'],
 ];
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#fbfbf6] text-[#0b0c0b]">
-      <section className="w-full overflow-hidden bg-[radial-gradient(circle_at_7%_8%,#eef8d7_0,#eef8d7_18%,transparent_38%),radial-gradient(circle_at_92%_18%,#dff5fb_0,#dff5fb_22%,transparent_44%),linear-gradient(180deg,#fbfbf6_0%,#f8f8f1_70%,#ffffff_100%)] px-4 py-5 sm:px-8 lg:px-12">
-        <HeroNav />
-        <section className="mx-auto max-w-3xl pt-12 text-center sm:pt-16">
-          <a href="#verification" className="inline-flex items-center gap-2 rounded-full bg-white/75 px-3 py-1.5 text-xs font-bold text-[#565b55] ring-1 ring-black/10">
-            <span className="rounded-full bg-black px-2 py-0.5 text-[10px] uppercase tracking-wide text-white">New</span>
-            QR scan + Gemini dialog fallback
-            <span aria-hidden>›</span>
-          </a>
-          <h1 className="mt-6 text-4xl font-black leading-[0.95] tracking-[-0.075em] text-black sm:text-6xl lg:text-7xl">
-            Verify every bank transfer before handing over goods.
-          </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-6 text-[#686d66] sm:text-base">
-            Surepay helps Ethiopian businesses detect fake transfer screenshots by matching QR receipts, captured success dialogs,
-            sender details, receiver accounts, amounts, and FT numbers in one staff-friendly PWA.
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a href="/login" className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-black px-6 py-3.5 text-sm font-black text-white sm:w-auto">
-              Sign in
-              <span className="grid size-6 place-items-center rounded-full bg-white text-black">↗</span>
-            </a>
-            <a href="/create-account" className="inline-flex w-full items-center justify-center rounded-full border border-black/20 bg-white/70 px-6 py-3.5 text-sm font-black sm:w-auto">
-              Create account
-            </a>
+    <main className="reference-hero min-h-screen overflow-hidden bg-[#f4f4f4] text-[#111111]">
+      <div className="hero-frame relative mx-auto min-h-screen max-w-[1180px] px-6 pb-12 pt-8 sm:px-10 lg:px-0">
+        <div className="absolute bottom-0 left-0 top-0 hidden w-px bg-[#d8d8d8] lg:block" />
+        <Header />
+
+        <section className="grid min-h-[calc(100vh-92px)] items-center gap-10 lg:grid-cols-[0.86fr_1.14fr]">
+          <div className="relative z-10 max-w-[560px] pb-8 lg:pb-0">
+            <div className="inline-flex rounded-[20px] bg-white p-1 shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
+              <span className="rounded-[16px] bg-[#f3f3f3] px-5 py-3 text-sm font-medium shadow-sm">Personal</span>
+              <span className="px-5 py-3 text-sm font-medium text-[#4d4d4d]">Business</span>
+            </div>
+
+            <h1 className="mt-7 max-w-[620px] text-[clamp(3.7rem,6.2vw,6.7rem)] font-semibold leading-[0.92] tracking-[-0.085em]">
+              Send, Withdraw &amp; deposit effortlessly
+            </h1>
+
+            <p className="mt-44 max-w-[480px] text-lg leading-[1.45] tracking-[-0.03em] text-[#6e6e6e] lg:mt-40">
+              We make digital payments accessible to everyone with just your smartphone all over the World
+            </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <StoreButton label="Get from Apple" icon="apple" />
+              <span className="text-base font-medium text-[#1d1d1d]">or</span>
+              <StoreButton label="Play store" icon="play" />
+            </div>
           </div>
+
+          <HeroPhone />
         </section>
-
-        <section className="relative mx-auto mt-12 grid max-w-5xl items-end gap-5 pb-4 lg:grid-cols-[1fr_1.05fr_1fr] lg:gap-0">
-          <SavingsCard />
-          <PhoneMockup />
-          <ReviewCard />
-        </section>
-
-        <section className="mx-auto mt-12 max-w-5xl pb-6 text-center sm:mt-16">
-          <p className="text-xs font-bold text-[#5d625c]">Designed for modern Ethiopian teams that accept bank transfers</p>
-          <div className="mt-6 grid grid-cols-2 gap-4 text-left text-sm font-black text-[#171817] sm:grid-cols-5 sm:text-center">
-            {trustLogos.map((logo) => (
-              <div key={logo} className="flex items-center justify-center gap-2 rounded-2xl border border-black/10 bg-white/55 px-3 py-3">
-                <span className="grid size-5 place-items-center rounded-md bg-black text-[10px] text-white">S</span>
-                {logo}
-              </div>
-            ))}
-          </div>
-        </section>
-      </section>
-
-      <section id="verification" className="mx-auto grid max-w-7xl gap-4 px-2 py-8 sm:px-0 md:grid-cols-4">
-        {verificationSteps.map((step, index) => (
-          <article key={step.title} className="rounded-[1.75rem] border border-black/10 bg-[#fbfbf6] p-6">
-            <span className="text-xs font-black text-[#2f7d58]">0{index + 1}</span>
-            <h2 className="mt-4 text-xl font-black tracking-tight">{step.title}</h2>
-            <p className="mt-3 text-sm leading-6 text-[#626860]">{step.detail}</p>
-          </article>
-        ))}
-      </section>
-
-      <section id="plan" className="mx-auto max-w-7xl px-2 pb-8 sm:px-0">
-        <div className="rounded-[2rem] border border-black/10 bg-[#fbfbf6] p-6 sm:p-8">
-          <p className="text-sm font-black uppercase tracking-[0.25em] text-[#2f7d58]">Build plan</p>
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {productPlan.map((item) => (
-              <p key={item} className="rounded-3xl border border-black/10 bg-white/60 p-5 leading-7 text-[#626860]">{item}</p>
-            ))}
-          </div>
-        </div>
-      </section>
+      </div>
     </main>
   );
 }
 
-function HeroNav() {
+function Header() {
   return (
-    <nav className="flex items-center justify-between gap-3 rounded-full bg-white/50 px-3 py-3 backdrop-blur sm:px-5">
-      <a href="/" className="flex items-center gap-2 text-base font-black">
-        <span className="grid size-9 place-items-center rounded-full bg-[#e8f8d9] text-[#2f7d58]">S</span>
-        Surepay
+    <header className="relative z-20 flex items-center justify-between pt-1 lg:pl-0">
+      <a href="/" className="flex items-center gap-3">
+        <span className="flex size-10 items-center justify-center rounded-xl bg-[#11b7e8] shadow-[0_12px_30px_rgba(17,183,232,0.26)]">
+          <span className="brand-mark size-8 rounded-lg bg-transparent" />
+        </span>
+        <span className="text-lg font-semibold tracking-[-0.04em]">wayve</span>
       </a>
-      <div className="hidden items-center gap-8 text-xs font-bold text-[#565b55] md:flex">
-        <a href="/create-account">Create account</a>
-        <a href="#verification">Features</a>
-        <a href="#plan">Roadmap</a>
-        <a href="/login">Staff Login</a>
-      </div>
-      <a href="/login" className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-2.5 text-xs font-black text-white sm:px-5">
-        Sign in
-        <span className="grid size-5 place-items-center rounded-full bg-white text-black">↗</span>
-      </a>
-    </nav>
+
+      <nav className="flex items-center gap-8 text-sm font-medium tracking-[-0.02em] text-[#191919]">
+        <a className="hidden sm:inline" href="/verify">Transfer Fees</a>
+        <a className="hidden sm:inline" href="/dashboard">Features</a>
+        <button className="rounded-full bg-white px-5 py-3 text-sm shadow-[0_12px_30px_rgba(0,0,0,0.05)]">ENG⌄</button>
+      </nav>
+    </header>
   );
 }
 
-function SavingsCard() {
+function StoreButton({ label, icon }: { label: string; icon: 'apple' | 'play' }) {
   return (
-    <article className="z-10 rounded-[1.75rem] border border-black/10 bg-white/82 p-6 backdrop-blur lg:-mr-10 lg:mb-14">
-      <h2 className="text-lg font-black tracking-tight">Receipt-based verification</h2>
-      <p className="mt-3 text-sm leading-6 text-[#6a7068]">Match the customer dialog against official bank receipt data before staff marks the sale paid.</p>
-      <div className="mt-7 flex items-center justify-between gap-4">
-        <div className="flex -space-x-3">
-          {['M', 'B', 'H'].map((avatar) => (
-            <span key={avatar} className="grid size-10 place-items-center rounded-full border-2 border-white bg-[#e8f8d9] text-sm font-black text-[#2f7d58]">{avatar}</span>
-          ))}
-        </div>
-        <div>
-          <p className="text-2xl font-black tracking-tight">2.5K</p>
-          <p className="text-xs font-bold text-[#6a7068]">Daily checks</p>
-        </div>
-      </div>
-    </article>
+    <a href="/create-account" className="inline-flex h-14 items-center gap-3 rounded-full bg-black px-7 text-sm font-medium text-white shadow-[0_18px_40px_rgba(0,0,0,0.16)]">
+      <span>{label}</span>
+      {icon === 'apple' ? <span className="text-xl leading-none"></span> : <span className="play-icon" aria-hidden />}
+    </a>
   );
 }
 
-function ReviewCard() {
+function HeroPhone() {
   return (
-    <article className="z-10 rounded-[1.75rem] border border-black/10 bg-white/82 p-6 backdrop-blur lg:-ml-10 lg:mb-28">
-      <div className="flex gap-1 text-[#2f7d58]" aria-label="5 star rating">
-        {Array.from({ length: 5 }).map((_, index) => <span key={index}>★</span>)}
+    <div className="relative min-h-[620px] lg:min-h-[720px]">
+      <div className="phone-lines" aria-hidden />
+      <div className="notice-bell" aria-hidden>⌂</div>
+      <div className="notice-card" aria-hidden>
+        <span className="notice-icon">▭</span>
+        <span>You're<br />receiving</span>
       </div>
-      <h2 className="mt-4 text-lg font-black tracking-tight">Best for transfer-heavy teams</h2>
-      <p className="mt-3 text-sm leading-6 text-[#6a7068]">The fallback image flow helps staff verify payments even when QR scanning is unreliable.</p>
-      <p className="mt-5 text-xs font-black uppercase tracking-[0.2em] text-black">Owner dashboard</p>
-    </article>
-  );
-}
 
-function PhoneMockup() {
-  return (
-    <div className="relative mx-auto w-[250px] sm:w-[310px]">
-      <div className="rounded-[2.6rem] border-[10px] border-black bg-[#f8f7ef] p-4">
-        <div className="mx-auto mb-5 h-6 w-24 rounded-full bg-black" />
-        <p className="text-sm font-black">Hello, Meron</p>
-        <p className="mt-1 text-xs text-[#747a72]">Here is your branch verification report.</p>
-        <p className="mt-5 text-3xl font-black tracking-[-0.05em]">ETB 84,897.23</p>
-        <p className="mt-1 text-xs font-bold text-[#2f7d58]">+18.2% verified today</p>
-        <div className="mt-6 grid grid-cols-[1fr_auto] gap-4">
-          <div className="space-y-3">
-            {proofCards.map((card) => (
-              <div key={card.label} className="rounded-2xl border border-black/10 bg-white p-3">
-                <p className="text-[10px] font-bold text-[#747a72]">{card.label}</p>
-                <p className="mt-1 text-sm font-black">{card.value}</p>
+      <div className="hand-phone" aria-label="Smartphone in hand">
+        <HandShape />
+        <div className="phone-shell">
+          <div className="phone-bezel">
+            <div className="dynamic-island" />
+            <div className="screen-content">
+              <div className="screen-top">
+                <span className="gear">⚙</span>
+                <span className="balance">120.000F</span>
+                <span className="tiny-time">10:41</span>
+                <div className="qr-card">
+                  <div className="qr-pattern" />
+                  <span className="mini-logo"><span className="brand-mark size-8 rounded-lg bg-[#12bde8]" /></span>
+                </div>
               </div>
-            ))}
+              <div className="quick-actions">
+                <PhoneAction icon="↙" label="SEND" active />
+                <PhoneAction icon="◈" label="PAYMENTS" />
+                <PhoneAction icon="▯" label="AIRTIME" />
+              </div>
+              <div className="wallet-list">
+                {walletItems.map(([title, date, amount]) => (
+                  <div key={`${title}-${date}`} className="wallet-row">
+                    <div>
+                      <p>{title}</p>
+                      <span>{date}</span>
+                    </div>
+                    <strong>{amount}</strong>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="relative mt-1 size-24 rounded-full bg-[conic-gradient(#2f7d58_0_35%,#f06f4f_35%_60%,#f3c969_60%_82%,#dfe8d7_82%_100%)]">
-            <div className="absolute inset-5 rounded-full bg-[#f8f7ef]" />
-          </div>
-        </div>
-        <div className="mt-6 grid grid-cols-2 gap-3 text-xs">
-          <div className="rounded-2xl bg-[#edf8e4] p-3"><b>QR</b><p className="text-[#747a72]">Primary scan</p></div>
-          <div className="rounded-2xl bg-[#fff0e7] p-3"><b>Image</b><p className="text-[#747a72]">Fallback OCR</p></div>
         </div>
       </div>
     </div>
+  );
+}
+
+function PhoneAction({ icon, label, active }: { icon: string; label: string; active?: boolean }) {
+  return (
+    <div className={active ? 'action active' : 'action'}>
+      <span>{icon}</span>
+      <p>{label}</p>
+    </div>
+  );
+}
+
+function HandShape() {
+  return (
+    <svg className="hand-svg" viewBox="0 0 520 760" aria-hidden="true">
+      <defs>
+        <linearGradient id="skin" x1="0" x2="1" y1="0" y2="1">
+          <stop stopColor="#7d402d" />
+          <stop offset="0.35" stopColor="#c28767" />
+          <stop offset="0.72" stopColor="#efd1bd" />
+          <stop offset="1" stopColor="#7a3828" />
+        </linearGradient>
+        <linearGradient id="skinShadow" x1="0" x2="1" y1="0" y2="1">
+          <stop stopColor="#6b2e25" />
+          <stop offset="1" stopColor="#e0ad8d" />
+        </linearGradient>
+        <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="30" stdDeviation="34" floodColor="#000" floodOpacity="0.16" />
+        </filter>
+      </defs>
+      <path filter="url(#softShadow)" d="M176 318c-46 40-60 96-50 162l16 112c10 70 49 128 111 158 58 28 123 2 129-62l22-239c4-46-1-91-24-118-35-42-139-70-204-13Z" fill="url(#skin)" />
+      <path d="M386 267c34-1 58 21 61 55l12 133c3 31-16 54-45 56l-18 1-4-241-6-4Z" fill="url(#skinShadow)" />
+      <path d="M129 318c-29-15-54-3-62 28-19 74 1 225 58 335 30 58 72 86 115 70-70-40-102-100-113-176L104 417c-6-44 2-77 25-99Z" fill="url(#skinShadow)" />
+      <path d="M421 319c37 4 54 27 53 68l-3 69c-1 29-20 50-48 51l-20 1 4-179 14-10Z" fill="#8d4634" opacity="0.78" />
+      <path d="M392 264c-5 52-4 211 3 247" stroke="#5f2b25" strokeWidth="6" strokeLinecap="round" opacity="0.42" />
+      <path d="M102 371c30 18 45 44 48 82" stroke="#5f2b25" strokeWidth="8" strokeLinecap="round" opacity="0.28" />
+    </svg>
   );
 }

@@ -1,19 +1,19 @@
 export const verificationSteps = [
   {
-    title: 'Scan the receipt QR',
-    detail: 'Staff scan the QR from the customer success screen to fetch the bank receipt PDF from the official receipt link.',
+    title: 'Scan or capture proof',
+    detail: 'Staff start with a QR scan or a clean image of the customer confirmation screen at the point of sale.',
   },
   {
-    title: 'Extract receipt facts',
-    detail: 'Gemini reads sender name, receiver name, amount, FT/reference number, account number, bank, and timestamp.',
+    title: 'Read payment details',
+    detail: 'SurePay identifies sender, receiver, amount, reference number, bank, and timestamp from the available proof.',
   },
   {
     title: 'Match business rules',
-    detail: 'Surepay compares receipt data against the customer screen text and the tenant\'s approved bank accounts.',
+    detail: 'The payment is compared with approved business accounts, expected amount, and reference details before fulfillment.',
   },
   {
     title: 'Record the decision',
-    detail: 'Verified transfers are stored with date, amount, sender bank, receiver bank, account, staff member, and branch.',
+    detail: 'Every verified, flagged, or failed payment is saved with branch, staff member, amount, bank, and time for audit clarity.',
   },
 ];
 
@@ -26,12 +26,12 @@ export const bankAccounts = [
 export const activity = [
   { id: 'FT2439P9G8', amount: 'ETB 4,850', sender: 'Mikiyas Alemu', bank: 'CBE', time: '09:42', status: 'Verified' },
   { id: 'FT2439P4B2', amount: 'ETB 1,200', sender: 'Hana Teferi', bank: 'Dashen', time: '09:18', status: 'Verified' },
-  { id: 'FT2438X7C1', amount: 'ETB 700', sender: 'Samrawit G.', bank: 'Awash', time: 'Yesterday', status: 'False amount' },
+  { id: 'FT2438X7C1', amount: 'ETB 700', sender: 'Samrawit G.', bank: 'Awash', time: 'Yesterday', status: 'Needs review' },
 ];
 
 export const productPlan = [
-  'Phase 1: Build tenant signup, Firebase phone OTP login, dashboard shell, and mobile verification UI.',
-  'Phase 2: Add Firebase tenants, staff roles, business bank accounts, verification history, and branch reporting.',
-  'Phase 3: Implement QR scanning, receipt PDF download, Gemini extraction, and deterministic matching rules.',
-  'Phase 4: Add audit trails, false-amount recovery flow, exports, alerts, and production monitoring.',
+  'Create the business profile, invite staff, and connect approved receiving accounts.',
+  'Give staff a focused payment check flow with scan, review, and clear decision states.',
+  'Track verification history, branch performance, risk events, and exportable audit records.',
+  'Add alerts, recovery workflows, and reporting tools as payment volume grows.',
 ];

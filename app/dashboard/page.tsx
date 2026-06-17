@@ -1,29 +1,4 @@
 import Link from 'next/link';
 import { activity, bankAccounts } from '@/lib/surepay';
-
-export default function DashboardPage() {
-  return (
-    <main className="min-h-screen bg-[var(--background)] px-5 py-6">
-      <section className="mx-auto max-w-6xl">
-        <div className="flex flex-wrap items-center justify-between gap-4 rounded-[2rem] border border-[var(--line)] bg-[var(--card)] p-6">
-          <div><p className="text-sm font-black uppercase tracking-[0.25em] text-[var(--primary)]">Owner dashboard</p><h1 className="mt-2 text-3xl font-black tracking-tight">Bereket Coffee PLC</h1></div>
-          <Link href="/verify" className="rounded-full bg-[var(--primary)] px-6 py-4 font-black text-[var(--primary-foreground)]">Verify payment</Link>
-        </div>
-        <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_0.9fr]">
-          <div className="rounded-[2rem] border border-[var(--line)] bg-[var(--card)] p-6">
-            <h2 className="text-xl font-black">Verified history</h2>
-            <div className="mt-4 space-y-3">
-              {activity.map((item) => <div key={item.id} className="rounded-2xl border border-[var(--line)] p-4"><div className="flex justify-between gap-4"><p className="font-black">{item.amount}</p><span className="text-sm font-black text-[var(--primary)]">{item.status}</span></div><p className="mt-1 text-sm text-[var(--muted)]">{item.sender} · {item.bank} · {item.id}</p></div>)}
-            </div>
-          </div>
-          <div className="rounded-[2rem] border border-[var(--line)] bg-[var(--card)] p-6">
-            <h2 className="text-xl font-black">Business bank accounts</h2>
-            <div className="mt-4 space-y-3">
-              {bankAccounts.map((account) => <div key={account.account} className="rounded-2xl border border-[var(--line)] p-4"><p className="font-black">{account.bank}</p><p className="mt-1 text-sm text-[var(--muted)]">{account.holder} · {account.account}</p></div>)}
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-  );
-}
+const stats=[['ETB 84,897','Verified today'],['276','Needs review'],['98%','Match quality']];
+export default function DashboardPage(){return <main className="min-h-screen px-5 py-6"><section className="mx-auto max-w-7xl"><header className="flex flex-wrap items-center justify-between gap-4 rounded-[2.25rem] border border-slate-200 bg-white/85 p-5 shadow-sm backdrop-blur"><Link href="/" className="flex items-center gap-3"><span className="brand-mark size-10 rounded-2xl bg-slate-50"/><span className="brand-word text-2xl font-black">Sure<span className="text-gradient">Pay</span></span></Link><Link href="/verify" className="rounded-full blue-gradient px-6 py-4 font-black text-white">Verify payment</Link></header><section className="mt-6 rounded-[2.5rem] bg-[var(--navy)] p-8 text-white"><p className="text-sm font-black uppercase tracking-[.28em] text-blue-200">Owner dashboard</p><h1 className="brand-word mt-3 text-5xl font-black tracking-[-.06em]">Bereket Coffee PLC</h1><div className="mt-8 grid gap-4 md:grid-cols-3">{stats.map(([n,l])=><div key={l} className="rounded-3xl bg-white/10 p-5"><p className="text-3xl font-black">{n}</p><p className="mt-1 text-sm text-blue-100">{l}</p></div>)}</div></section><div className="mt-6 grid gap-6 lg:grid-cols-[1fr_.85fr]"><div className="rounded-[2.25rem] border border-slate-200 bg-white p-6 shadow-sm"><h2 className="brand-word text-3xl font-black tracking-[-.04em]">Verification history</h2><div className="mt-5 space-y-3">{activity.map((item)=><div key={item.id} className="flex items-center justify-between gap-4 rounded-3xl bg-slate-50 p-4"><div><p className="font-black">{item.amount}</p><p className="mt-1 text-sm text-[var(--muted)]">{item.sender} · {item.bank} · {item.id}</p></div><span className="rounded-full bg-emerald-50 px-3 py-1 text-sm font-black text-emerald-600">{item.status}</span></div>)}</div></div><div className="rounded-[2.25rem] border border-slate-200 bg-white p-6 shadow-sm"><h2 className="brand-word text-3xl font-black tracking-[-.04em]">Bank accounts</h2><div className="mt-5 space-y-3">{bankAccounts.map((a)=><div key={a.account} className="rounded-3xl border border-slate-100 p-4"><p className="font-black">{a.bank}</p><p className="mt-1 text-sm text-[var(--muted)]">{a.holder} · {a.account}</p></div>)}</div></div></div></section></main>}

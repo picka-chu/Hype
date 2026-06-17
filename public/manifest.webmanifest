@@ -1,11 +1,11 @@
 {
   "name": "Surepay",
   "short_name": "Surepay",
-  "description": "Verify Ethiopian bank transfers before fulfillment.",
+  "description": "Verify bank transfers before fulfillment.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f5f3ed",
-  "theme_color": "#0f3d35",
+  "background_color": "#F8FAFC",
+  "theme_color": "#2563FF",
   "icons": [
     {
       "src": "/icon.svg",
