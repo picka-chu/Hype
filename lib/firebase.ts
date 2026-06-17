@@ -15,14 +15,14 @@ export const firebaseCollections = {
 
 export const authFlow = {
   login: [
-    'Staff or owner enters phone number and password.',
-    'Server verifies the password against the Firebase user profile credential record.',
-    'Firebase Auth sends a phone OTP challenge.',
-    'User enters OTP and Surepay opens the business dashboard.',
+    'Enter the business phone number and password.',
+    'Confirm the one-time code sent to the account phone.',
+    'Open the workspace with the right business, branch, and role.',
+    'Continue to the dashboard with recent activity and pending reviews.',
   ],
   createAccount: [
-    'Owner enters full name, business name, business address, phone number, password, and confirm password.',
-    'Surepay validates password confirmation and sends Firebase phone OTP.',
-    'After OTP verification, Surepay creates the tenant, owner profile, default branch, and business dashboard access.',
+    'Add the owner profile and core business details.',
+    'Confirm the business phone number with a one-time code.',
+    'Create the workspace, default branch, and approved owner access.',
   ],
 } as const;

@@ -1,21 +1,3 @@
 import Link from 'next/link';
 import { productPlan } from '@/lib/surepay';
-
-export default function OnboardingPage() {
-  return (
-    <main className="min-h-screen bg-[var(--background)] px-5 py-8">
-      <section className="mx-auto max-w-3xl rounded-[2rem] border border-[var(--line)] bg-[var(--card)] p-7 md:p-10">
-        <p className="text-sm font-black uppercase tracking-[0.25em] text-[var(--primary)]">Surepay onboarding</p>
-        <h1 className="mt-5 text-4xl font-black tracking-[-0.05em] md:text-6xl">Set up a tenant, banks, and staff before the first scan.</h1>
-        <div className="mt-8 grid gap-4">
-          {productPlan.map((step) => (
-            <p key={step} className="rounded-3xl border border-[var(--line)] p-5 leading-7 text-[var(--muted)]">{step}</p>
-          ))}
-        </div>
-        <Link className="mt-8 inline-flex rounded-full bg-[var(--primary)] px-7 py-4 font-black text-[var(--primary-foreground)]" href="/create-account">
-          Create business account
-        </Link>
-      </section>
-    </main>
-  );
-}
+export default function OnboardingPage(){return <main className="min-h-screen px-5 py-8"><section className="mx-auto max-w-4xl rounded-[2.5rem] border border-slate-200 bg-white p-8 shadow-sm"><span className="brand-mark size-14 rounded-3xl bg-slate-50"/><p className="mt-8 text-sm font-black uppercase tracking-[.28em] text-[var(--primary)]">SurePay onboarding</p><h1 className="brand-word mt-4 text-5xl font-black tracking-[-.06em]">Set up accounts, staff, and payment review in one guided flow.</h1><div className="mt-8 grid gap-4 sm:grid-cols-2">{productPlan.map((s)=><p key={s} className="rounded-3xl bg-slate-50 p-5 leading-7 text-[var(--muted)]">{s}</p>)}</div><Link className="mt-8 inline-flex rounded-full blue-gradient px-7 py-4 font-black text-white" href="/create-account">Create business account</Link></section></main>}
