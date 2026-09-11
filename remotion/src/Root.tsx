@@ -6,10 +6,10 @@ export const RemotionRoot = () => {
     <Composition
       id="StopGuessing"
       component={StopGuessing}
-      durationInFrames={90}
+      durationInFrames={360}
       fps={30}
-      width={1080}
-      height={1920}
+      width={720}
+      height={720}
     />
   );
 };
