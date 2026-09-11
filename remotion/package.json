@@ -1,0 +1,16 @@
+{
+  "name": "hype-remotion-text-animation",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio"
+  },
+  "dependencies": {
+    "@remotion/blurhash": "latest",
+    "remotion": "latest"
+  },
+  "devDependencies": {
+    "@remotion/cli": "latest",
+    "typescript": "latest"
+  }
+}
